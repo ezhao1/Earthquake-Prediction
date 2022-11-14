@@ -1,0 +1,3 @@
+Download the earthquake data, labeled "train.csv", from https://www.kaggle.com/c/LANL-Earthquake-Prediction/data. Then change 
+"/scratch/tschrad1/train.csv" online 17 in conv.py and lstm.py to the file location of your downloaded data. After this, conv.py and lstm.py
+should run fine.
