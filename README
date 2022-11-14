@@ -1,3 +1,21 @@
-Download the earthquake data, labeled "train.csv", from https://www.kaggle.com/c/LANL-Earthquake-Prediction/data. Then change 
+In this project, we are tackling a Kaggle challenge called "LANL Earthquake Prediction." In the problem,
+we are given a dataset full of seismic data (approximately, the acoustic variance of seismic waves) as well as time to next fault failure (earthquake) and are tasked to predict,
+given seismic data, the approximate imminence of an earthquake. In order to tackle this problem,
+we use Keras to construct a long short term memory (LSTM) recurrent neural network (RNN) to
+predict the earthquake imminence. Preceding LSTM layer, we included a 1D ConvNet layer to detect features
+within the data.
+
+We decided to use an LSTM because the network deals well with time-series style data, in which
+each previous input influences the next one. This works well with our data, as the time-to-failure(TTF), the time until the next earthquake, cannot be realistically predicted by any particular data point but only by looking an ordered temporal sequence of many. Additionally,
+the LSTM gives us the potential to predict upcoming acoustic data, which can be used to refine the model's predictions further based
+on their accuracy (i.e. erroneous TTF predictions can be used to refine the model as well as incoming seismic data predictions that 
+don't match the data received).
+
+In our problem, we decided to discretize our output, predicted time-to-failure, into three categories of how close
+it was to an earthquake: highly critical, fairly critical, and not critical. This way, we have a clearer and more straightforward
+system that neatly sorts our output into simple and understandable categories, allowing the results to be interpreted more easily
+by a human. 
+
+To Run: Download the earthquake data, labeled "train.csv", from https://www.kaggle.com/c/LANL-Earthquake-Prediction/data. Then change 
 "/scratch/tschrad1/train.csv" online 17 in conv.py and lstm.py to the file location of your downloaded data. After this, conv.py and lstm.py
 should run fine.
